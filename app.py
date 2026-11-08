@@ -1,11 +1,10 @@
-
 import streamlit as st
 import streamlit.components.v1 as components
 
 st.set_page_config(
     page_title="Happy Diwali 🪔",
     page_icon="🪔",
-    layout="wide"
+    layout="centered"
 )
 
 html = r"""
@@ -29,7 +28,7 @@ body {
 }
 
 .main {
-    min-height: 100vh;
+    min-height: 1200px;
     background:
     radial-gradient(ellipse at 50% 40%, #57213c 0%, transparent 65%),
     linear-gradient(160deg, #160b20, #29102c, #10091b);
@@ -68,7 +67,6 @@ body {
     margin: 0 auto 45px;
     padding: 15px 0;
     border-top: 2px solid #bd8745;
-    position: relative;
 }
 
 .light {
@@ -94,14 +92,14 @@ body {
 
 .top-label {
     color: #f6ca86;
-    letter-spacing: 5px;
+    letter-spacing: 4px;
     font-size: 11px;
     margin-bottom: 25px;
     text-transform: uppercase;
 }
 
 h1 {
-    font-size: clamp(43px, 9vw, 76px);
+    font-size: clamp(45px, 9vw, 76px);
     line-height: 1.15;
     color: #ffe5a7;
     text-shadow: 0 0 15px #d68c40, 0 0 45px #b85c36;
@@ -112,12 +110,10 @@ h1 {
     color: #f2c6a0;
     font-size: 17px;
     margin-top: 18px;
-    letter-spacing: 1px;
 }
 
 .diya-area {
     margin: 35px auto 25px;
-    position: relative;
     width: 180px;
     height: 170px;
     display: flex;
@@ -183,31 +179,18 @@ button {
     padding: 16px 35px;
     font-size: 15px;
     font-weight: bold;
-    letter-spacing: 1px;
     cursor: pointer;
     box-shadow: 0 0 25px rgba(255,170,67,.35);
-    transition: .3s;
     margin: 18px auto;
-}
-
-button:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 0 35px rgba(255,170,67,.7);
 }
 
 #surprise {
     display: none;
     color: #ffe4ad;
-    font-size: 19px;
+    font-size: 18px;
     line-height: 1.8;
     margin: 25px auto;
     max-width: 500px;
-    animation: appear 1s ease;
-}
-
-@keyframes appear {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
 }
 
 .footer {
@@ -224,14 +207,6 @@ button:hover {
 }
 
 @media(max-width: 600px) {
-    .main {
-        padding-top: 20px;
-    }
-
-    .lights {
-        margin-bottom: 38px;
-    }
-
     .message {
         font-size: 15px;
     }
@@ -263,13 +238,13 @@ button:hover {
 </div>
 
 <div class="top-label">
-    A festival of lights, love and happiness
+A festival of lights, love and happiness
 </div>
 
 <h1>Happy<br>Diwali!</h1>
 
 <p class="subtitle">
-    ✨ May your life shine brighter ✨
+✨ May your life shine brighter ✨
 </p>
 
 <div class="diya-area">
@@ -277,50 +252,50 @@ button:hover {
 </div>
 
 <div class="message">
-    Some festivals are more than celebrations.
-    They bring people closer, fill our homes with
-    warmth and remind us to spread happiness.
-    <br><br>
-    So, I made this little corner of light and
-    happiness to wish you all a beautiful Diwali.
+Some festivals are more than celebrations.
+They bring people closer, fill our homes with
+warmth and remind us to spread happiness.
+<br><br>
+So, I made this little corner of light and
+happiness to wish you all a beautiful Diwali.
 </div>
 
 <div class="divider"></div>
 
 <div class="wish-card">
-    <h2>A Little Wish For You ❤️</h2>
+<h2>A Little Wish For You ❤️</h2>
 
-    <p>
-        May every diya bring a new hope into your life.
-        May your home be filled with laughter,
-        your heart with peace, and your days with
-        endless happiness.
-        <br><br>
-        Wishing you and your family prosperity,
-        good health and countless beautiful moments.
-    </p>
+<p>
+May every diya bring a new hope into your life.
+May your home be filled with laughter,
+your heart with peace, and your days with
+endless happiness.
+<br><br>
+Wishing you and your family prosperity,
+good health and countless beautiful moments.
+</p>
 </div>
 
 <button onclick="lightDiya()">
-    🪔 Light a Diya
+🪔 Light a Diya
 </button>
 
 <div id="surprise">
-    ✨ A little light can brighten the darkest night. ✨
-    <br><br>
-    Keep smiling, keep shining and keep spreading
-    happiness wherever you go.
-    <br><br>
-    Once again, a very Happy Diwali! ❤️
+✨ A little light can brighten the darkest night. ✨
+<br><br>
+Keep smiling, keep shining and keep spreading
+happiness wherever you go.
+<br><br>
+Once again, a very Happy Diwali! ❤️
 </div>
 
 <div class="footer">
-    Made with love, just to spread a little happiness.
-    <div class="signature">
-        ❤️ Made with a little bit of code by Deep.
-    </div>
-    <br>
-    शुभ दीपावली 🪔
+Made with love, just to spread a little happiness.
+<div class="signature">
+❤️ Made with a little bit of code by Deep.
+</div>
+<br>
+शुभ दीपावली 🪔
 </div>
 
 </div>
@@ -380,6 +355,13 @@ function animate() {
 
 animate();
 
+setInterval(() => {
+    burst(
+        Math.random() * canvas.width,
+        Math.random() * canvas.height * 0.55
+    );
+}, 1800);
+
 function lightDiya() {
     document.getElementById("surprise").style.display = "block";
 
@@ -403,9 +385,6 @@ function lightDiya() {
 
 </body>
 </html>
-"""
-
-components.html(html, height=1250, scrolling=True)
 """
 
 components.html(html, height=1250, scrolling=True)
